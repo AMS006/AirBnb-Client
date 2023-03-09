@@ -73,7 +73,7 @@ function AddNewPlacesPage() {
         for(let i = 0;i<files.length;i++){
             form.append('files',files[i]);
         }
-        const {data} = await axios.post('http://localhost:4000/api/v1/place/upload',form)
+        const {data} = await axios.post('https://shy-lime-bull-tux.cyclic.app/api/v1/place/upload',form)
         console.log(data);
         const images = data.images
         setImages((prev) => [...prev,...images])

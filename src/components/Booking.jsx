@@ -23,7 +23,7 @@ function Booking() {
             {bookings.map((booking) => (
                 <div className='sm:flex gap-4 bg-gray-200'>
                     <div className='sm:w-48 sm:h-36 h-44 rounded-lg p-1'>
-                        <img src={`http://localhost:4000/uploads/${booking.place.images[0]}`} className='w-full h-full overflow-hidden rounded-lg object-cover' alt="" />
+                        <img src={`${booking.place.images[0]}`} className='w-full h-full overflow-hidden rounded-lg object-cover' alt="" />
                     </div>
                     <div>
                         <h2 className='font-semibold text-lg'>{booking.place.title}</h2>
