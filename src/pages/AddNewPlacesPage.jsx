@@ -74,10 +74,9 @@ function AddNewPlacesPage() {
             form.append('files',files[i]);
         }
         const {data} = await axios.post('https://shy-lime-bull-tux.cyclic.app/api/v1/place/upload',form)
-        console.log(data);
+
         const images = data.images
         setImages((prev) => [...prev,...images])
-        console.log(images)
     }
     const handleImageDelete = (photo,ev) =>{
         ev.preventDefault()
@@ -106,7 +105,7 @@ function AddNewPlacesPage() {
                 <span className='text-sm text-gray-500'>more = better</span>
                 <div className='flex items-center gap-2'>
                     <input type={'url'} name="" className='w-full border border-gray-600 rounded-xl px-4 py-2' id="photo" placeholder='Add using a link ...jpg' value={activeLink} onChange={(e) =>setActiveLink(e.target.value)}/>
-                    <button className='border bg-gray-400 font-semibold text-white w-32 p-2 rounded' onClick={handleAddImageLink}>Add image</button>
+                    <button className='border bg-gray-800 font-semibold text-white w-32 p-2 rounded' onClick={handleAddImageLink}>Add image</button>
                 </div>
             </div>
             <div>

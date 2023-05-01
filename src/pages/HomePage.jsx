@@ -3,15 +3,25 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import HomeLayout from '../layouts/HomeLayout'
 import { getAllPlaces } from '../redux/actions/place'
+import ReactLoading from 'react-loading';
 
 function HomePage() {
   const dispatch = useDispatch()
-  const places = useSelector((state) => state.place.places);
+  const {places,loading} = useSelector((state) => state.place);
+
   useEffect(()=>{
     dispatch(getAllPlaces())
   },[])
+  if(loading){
+    return(
+      <div className='h-full w-full flex justify-center items-center'>
+        <ReactLoading type='spin' color={'blue'} height={67} width={35} />
+      </div>
+    )
+  }
   return (
     <div className='mb-4'>
+      <h1 className='py-3 px-6 text-2xl font-semibold'>All Places</h1>
         {places.length >0 && 
         <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-x-4 gap-y-6 md:px-6 px-3 mt-4'>
           {places.map((place,index) => (

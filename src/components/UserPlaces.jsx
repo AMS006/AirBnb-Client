@@ -1,10 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-
+import ReactLoading from 'react-loading';
 function UserPlaces() {
-    const places = useSelector((state) => state.place.userPlaces)
-    if(places.length <= 0)
+    const {userPlaces,loading} = useSelector((state) => state.place)
+    if(loading){
+        return(
+          <div className='h-full w-full py-6 flex justify-center items-center'>
+            <ReactLoading type='spin' color={'blue'} height={67} width={35} />
+          </div>
+        )
+      }
+    if(userPlaces.length <= 0)
         return(
             <div className='flex justify-center text-gray-500 font-semibold'>
                 <span>No Accomadations found</span>
@@ -12,7 +19,7 @@ function UserPlaces() {
         )
   return (
     <div className='md:px-4 px-2 flex flex-col gap-3 my-4 '>
-        {places.length>0 && places.map((place,index) =>(
+        {userPlaces.length>0 && userPlaces.map((place,index) =>(
             <Link to={`/account/accomadation/${place._id}`} key={index} className='bg-gray-200 shadow px-2 py-2 flex md:flex-row flex-col gap-3 rounded'>
                 <div className='md:h-32 md:w-36 flex rounded overflow-hidden'>
                     <img src={`${place.images[0]}`} alt={`${place.images[0]}`} className="h-full w-full object-cover" />
