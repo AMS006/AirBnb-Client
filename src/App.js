@@ -12,8 +12,9 @@ import PlacePage from './pages/PlacePage';
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getProfile())
-  }, [])
+    if(localStorage.AirBnbToken)
+      dispatch(getProfile())
+  }, [localStorage])
   
   return (
     <BrowserRouter >
