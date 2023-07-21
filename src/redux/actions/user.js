@@ -11,8 +11,12 @@ export const createUser = (user) => async(dispatch) =>{
             data:user
         })
         localStorage.setItem('AirBnbToken',JSON.stringify({token:userData.data.token}))
+
+        axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${userData.data.token}`;
         
-        dispatch(userSuccess(userData.data))
+        dispatch(userSuccess(userData.data.user))
     } catch (error) {
         dispatch(userFail(error.message))
     }

@@ -1,12 +1,12 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { AiOutlineCloudUpload } from 'react-icons/ai'
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AiOutlineCloudUpload } from 'react-icons/ai'
+import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
+import {BsTrashFill} from 'react-icons/bs'
 import Perks from '../components/Perks'
 import HomeLayout from '../layouts/HomeLayout'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux';
-import {BsTrashFill} from 'react-icons/bs'
-import {AiFillStar,AiOutlineStar} from 'react-icons/ai'
 import { addNewPlace, getPlaceById, updatePlace } from '../redux/actions/place';
 function AddNewPlacesPage() {
     const {action} = useParams()
@@ -27,8 +27,10 @@ function AddNewPlacesPage() {
     const placeData = useSelector((state) => state.place.activePlace)
     
     useEffect(() =>{
-        {action !== "new" && dispatch(getPlaceById(action))}
-    },[action])
+        if(action !== "new"){
+            dispatch(getPlaceById(action))
+        }
+    },[action,dispatch])
     useEffect(() =>{
         if(action !== "new" && placeData){
             setTitle(placeData.title)
@@ -41,7 +43,7 @@ function AddNewPlacesPage() {
             setImages(placeData.images)
             setPerks(placeData.perks)
         }
-    },[placeData])
+    },[placeData,action])
 
     const handleSubmit = (e) =>{
         e.preventDefault();

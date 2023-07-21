@@ -16,15 +16,11 @@ function Navbar() {
                 <h2 className='font-bold font-serif text-red-500 text-2xl'>airbnb</h2>
             </div>
         </Link>
-        <div className='md:flex hidden items-center  gap-2 border shadow-md shadow-gray-300 rounded-full px-6 py-2'>
-            <div className='text-sm font-semibold text-slate-800'>Anywhere</div>
-            <div className='text-gray-500'>|</div>
-            <div className='text-sm font-semibold text-slate-800'>Any week</div>
-            <div className='text-gray-500'>|</div>
-            <div className='flex items-center gap-3'>
-                <p className='text-sm text-gray-600'>Add guests</p>
-                <span className='bg-red-500 p-1 rounded-full font-semibold text-white'><BiSearch /></span>
-            </div>
+        <div className='relative md:flex hidden items-center  gap-2 border shadow-md shadow-gray-300 rounded-full px-5 py-2'>
+            <input type="text" name="search" placeholder='Search By Location' className='focus:outline-none text-base w-72' id="search" />
+            <button className=' absolute right-0 rounded-full bg-red-500 text-white p-1.5 font-bold mx-2 flex justify-center items-center'>
+                <BiSearch size={20}/>
+            </button>
         </div>
         <div className='flex items-center px-4 py-2 border rounded-full gap-2'>
             <span className='text-lg '><FaBars/></span>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { AiFillCar, AiOutlineWifi } from 'react-icons/ai'
 import {TbToolsKitchen2} from 'react-icons/tb'
 import {IoWaterOutline} from 'react-icons/io5'

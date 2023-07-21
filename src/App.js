@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     if(localStorage.AirBnbToken)
       dispatch(getProfile())
-  }, [localStorage])
+  }, [dispatch])
   
   return (
     <BrowserRouter >

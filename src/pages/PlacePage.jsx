@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import ImageGallery from '../components/ImageGallery'
 import ImageViewer from '../components/ImageViewer'
 import {differenceInCalendarDays} from 'date-fns'
 import { getPlaceById } from '../redux/actions/place'
@@ -11,7 +10,6 @@ import HomeLayout from '../layouts/HomeLayout'
 
 function PlacePage() {
     const {id} = useParams()
-    const [open,setOpen] = useState(false)
     const [checkIn,setCheckIn] = useState('')
     const [checkOut,setCheckOut] = useState('')
     const [maxGuest,setMaxGuests] = useState(1)
@@ -21,7 +19,7 @@ function PlacePage() {
     const dispatch = useDispatch();
     useEffect(() =>{
         dispatch(getPlaceById(id))
-    },[id])
+    },[id,dispatch])
     const {activePlace,loading} = useSelector((state) => state.place)
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -58,14 +56,13 @@ function PlacePage() {
     }
   return (
     <>
-        {open && activePlace && <ImageGallery photos={activePlace.images} title={activePlace.title} setOpen={setOpen}/>}
-        {activePlace && !open &&
+        {activePlace &&
         <>
             <div className='md:px-8 px-4 my-4'>
                 <h2 className='md:text-2xl text-xl font-semibold'>{activePlace.title}</h2>
-                <a className='underline mt-2 text-gray-600 cursor-pointer hover:text-gray-900'>{activePlace.address}</a>
+                <span className='underline mt-2 text-gray-600 cursor-pointer hover:text-gray-900'>{activePlace.address}</span>
                 <div>
-                    <ImageViewer photos={activePlace.images} title={activePlace.title} setOpen={setOpen}/>
+                    <ImageViewer photos={activePlace.images} />
                 </div>
                 <div className='flex md:flex-row flex-col gap-3'>
                     <div>

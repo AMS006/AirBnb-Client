@@ -2,9 +2,12 @@ import axios from 'axios'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux'
+import 'react-photo-view/dist/react-photo-view.css';
+import { Toaster } from 'react-hot-toast';
 import './index.css';
 import App from './App';
 import store from './redux/store'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 axios.defaults.withCredentials = true;
 if (localStorage.AirBnbToken) {
@@ -14,6 +17,7 @@ if (localStorage.AirBnbToken) {
 root.render(
   <Provider store = {store}>
     <React.StrictMode>
+        <Toaster />
         <App />
     </React.StrictMode>
   </Provider>
