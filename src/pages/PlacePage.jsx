@@ -21,6 +21,7 @@ function PlacePage() {
     const [bookingLoading,setLoading] = useState(false);
 
     const {newBooking} = useSelector((state) => state.booking)
+    const {user} = useSelector((state) => state.user)
     
     const navigate = useNavigate();
     useEffect(() => {
@@ -39,6 +40,10 @@ function PlacePage() {
     const { activePlace, loading } = useSelector((state) => state.place)
     const handleSubmit = (e) => {
         e.preventDefault()
+        if(!user){
+            toast.error("Login to book the place")
+            navigate('/login')
+        }
         setLoading(true);
         const days = differenceInCalendarDays(new Date(checkOut), new Date(checkIn))
         if(days <= 0){
