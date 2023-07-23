@@ -62,7 +62,7 @@ function AccountPage() {
                     <div className='flex justify-end md:px-4 px-2 md:mt-0 mt-2'>
                         <Link to={'/account/accomadation/new'} className='flex gap-1 items-center px-4 bg-red-500 text-white py-2 font-semibold rounded-full'>
                             <AiOutlinePlus />
-                            Add Places</Link>
+                            Add Accomadations</Link>
                     </div>
                     <UserPlaces />
                 </div>}

@@ -137,6 +137,7 @@ function PlacePage() {
                                     </div>
                                     <input type='submit' value={`${activePlace.status === 'Booked'?'Not Available':`${bookingLoading?'Booking...':'Book'}`}`} className={`w-full py-2 bg-red-500 text-white font-semibold mt-3 rounded-full ${bookingLoading?'bg-opacity-50 cursor-default':''}  ${activePlace.status === 'Booked'?'cursor-default bg-opacity-50':'cursor-pointer'}`} />
                                 </form>
+                                <p className='py-1.5 text-sm text-red-600 text-center'><b>*Note</b>: Once Booked It cannot be cancelled</p>
                             </div>
                         </div>
                     </div>

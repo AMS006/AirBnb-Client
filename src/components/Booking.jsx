@@ -5,6 +5,7 @@ import { differenceInCalendarDays } from 'date-fns'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { BsCalendarDate } from 'react-icons/bs'
 import { getUserBookings } from '../redux/actions/booking'
+import { Link } from 'react-router-dom';
 
 function Booking() {
     const dispatch = useDispatch()
@@ -30,7 +31,7 @@ function Booking() {
         <div className='mt-4'>
             {userBookings?.length > 0 && <div className='flex flex-col gap-4 px-4'>
                 {userBookings.map((booking, idx) => (
-                    <div key={idx} className='sm:flex gap-4 bg-gray-200 p-1.5'>
+                    <Link to={`/place/${booking.place._id}`} key={idx} className='sm:flex gap-4 bg-gray-200 p-1.5'>
                         <div className='sm:w-48 sm:h-36 h-44 rounded-lg p-1'>
                             <img src={`${booking.place.images[0]}`} className='w-full h-full overflow-hidden rounded-lg object-cover' alt="" />
                         </div>
@@ -45,7 +46,7 @@ function Booking() {
                             <h4><span className='font-semibold text-lg'>Total-Price :&nbsp;</span>₹{booking.price}</h4>
                             <h4><span className='font-semibold text-lg'>Phone :&nbsp;</span>{booking.phone}</h4>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>}
         </div>

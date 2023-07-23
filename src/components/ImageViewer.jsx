@@ -7,7 +7,7 @@ function ImageViewer({ photos }) {
   return (
     <PhotoProvider>
       {photos.length > 0 && <div className={`grid gap-2  ${photos.length >= 4 ? 'md:grid-cols-[2fr_1fr_1fr] sm:grid-cols-[2fr_1fr]' : `${photos.length >= 2 ? 'sm:grid-cols-[2fr_1fr]' : ''}`}  my-4 relative`}>
-        <div className={`h-full w-full cursor-pointer`}  >
+        <div className={`h-full w-full cursor-pointer relative`}  >
           <Image src={photos[0]} />
         </div>
         {photos.length >= 2 && <div className={`sm:grid hidden grid-rows-2 gap-2 h-full w-full cursor-pointer`}>
